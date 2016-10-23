@@ -14,7 +14,7 @@ public class SudokuGen {
 		}		
 
 		public SudokuGen() {
-			rowArray = new int [9]; //has 9 elements
+			rowArray = new int [9]; 
 			
 			
 		
