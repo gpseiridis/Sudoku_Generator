@@ -2,8 +2,8 @@
 public class SudokuGen {
 
 		public int [] rowArray;
-	
-		
+		public int [][] sudokuArray;
+		private String rowOrNot=" ";
 		
 		
 		public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class SudokuGen {
 
 		public SudokuGen() {
 			rowArray = new int [9]; //has 9 elements
-			
+			sudokuArray= new int [9][9]; // 9 X 9 array
 			
 		
 		}
@@ -42,9 +42,11 @@ public class SudokuGen {
 						
 				}
 				
+				
 				index++;
 				
 			}
+			
 		
 			
 		
@@ -54,12 +56,22 @@ public class SudokuGen {
 		
 		public void printSudoku() {
 			
-			System.out.println();			
+			System.out.println();
+			System.out.println(" ---------------------------------");
 			for(int i=0; i<9; i++){
+				//System.out.print(" | ");
 				
 				if(i>0)
-					moveThreeTimes();
+					moveThree();
 				
+				if(i==3|| i==6 ){
+					
+					System.out.println(" ---------------------------------");					 
+					System.out.print(" | ");
+					
+				}else{
+					System.out.print(" | ");
+				}
 				
 				//made this to avoid same line repeating
 				if(i==3 || i == 6){
@@ -69,23 +81,34 @@ public class SudokuGen {
 				
 				for(int j = 0; j<9; j++){
 					
-			
-					System.out.print(rowArray[j]);
-
+					sudokuArray[i][j] = rowArray[j];
+					System.out.print(rowArray[j]+rowOrNot+ " ");
+					if(j==1 || j==4|| j==7 ||j==-2){
+						rowOrNot=" | ";
+					}
+					else{
+						rowOrNot =" ";
+					}
 					
 				}
 				
 				System.out.println();
 			}
-		
+			System.out.println(" ---------------------------------");
 			System.out.println();
 			
-		
+			for(int i=0; i<rowArray.length; i++){
+				System.out.println();
+				for(int j=0; j<rowArray.length; j++){
+					System.out.print(sudokuArray[i][j]);
+					
+				}
+			}
 		}//end of method print sudoku
 		
 		
 
-		public void moveThreeTimes() {
+		public void moveThree() {
 			int temp=0;
 		//the temp will be the value of first index in the array (0)
 			//ASCII for the first column out of 3 for each block
@@ -107,7 +130,7 @@ public class SudokuGen {
 		
 		public void shiftCell() {
 			
-			int temp = 0;
+			int temp =0;
 			//each 3 cells in the boxes get swapped-shifted
 			//ASCII
 			//|1 5 4| 8 7 3 | 2 9 6|   will become 
