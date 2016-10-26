@@ -7,21 +7,13 @@ public class TestSudoku {
 
 SudokuGen mSudoku = new SudokuGen();
 
-	
-	//test 1: rows = 45
-	// test 2 : columns = 45
-	// test 3 : squares = 45
-	// test 4 : des mhpws yparxei arithmos panw apo 9 'h katw apo 1
-	//          tha borouse px na nai 11, -2 values
-	// test 5: check if length is 9
-	
-int expectedSum = 45;	
+
+
+int expectedSum = 45;	//<--unique numbers will give a sum(1 to 9) = 45	
 int limit = mSudoku.sudokuArray.length;
 int mockArray[]= {1,2,3,4,4,6,7,8,9}; //<--fails, actualSum = 45	
 int mockArray2[]= {12,4,3,4,4,6,-7,10,9}; // <-- passes the test of actual sum = 45
-
-
-
+int mockArray3[]= {1,2,3,4,5,6,7,8,0};  // <-- has 0
 
 
 	
@@ -47,7 +39,7 @@ int mockArray2[]= {12,4,3,4,4,6,-7,10,9}; // <-- passes the test of actual sum =
 		for (int row = 0; row < limit; row++) {
 			for (int column = 0; column < limit; column++) {
 				//testing this test case using mock arrays
-				//if(mockArray2[row]<=9 && mockArray2[row]>0){ <-- will fail, since there are bigger than 9 and negatives
+				//	if(mockArray2[row]<=9 && mockArray2[row]>0){ <-- will fail, since there are bigger than 9 and negatives
 				//if(mockArray[row]<=9 && mockArray[row]>0){  <-- passes, since there is no invalid number
 					
 				if(mSudoku.sudokuArray[row][column]<=9 && mSudoku.sudokuArray[row][column]>0){
@@ -63,7 +55,7 @@ int mockArray2[]= {12,4,3,4,4,6,-7,10,9}; // <-- passes the test of actual sum =
 	}
 
 
-	//unique numbers will give a sum(1 to 9) = 45
+	
 	//test 3: sum of all rows should be equal to 45
 	@Test
 	public void testRows(){
