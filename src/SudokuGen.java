@@ -37,11 +37,9 @@ public class SudokuGen {
 					if(rowArray[i]==j){
 						index--;
 						
-						
 					}
 						
 				}
-				
 				
 				index++;
 				
@@ -125,9 +123,15 @@ public class SudokuGen {
 			//|1 5 4| 8 7 3 | 2 9 6|      <--- 1st row 
 			//|8 7 3| 2 9 6 | 1 5 4|      <--- 2nd row
 		//HOWEVER, the 4th line will be the same with the first line.
-			temp = rowArray[0]; rowArray[0]=rowArray[3]; rowArray[3]= rowArray[6]; rowArray[6]= temp;
-			temp = rowArray[1]; rowArray[1]=rowArray[4]; rowArray[4]= rowArray[7]; rowArray[7]= temp;
-			temp = rowArray[2]; rowArray[2]=rowArray[5]; rowArray[5]= rowArray[8]; rowArray[8]= temp;
+			
+			for(int i=0; i<3; i++){
+				temp = rowArray[i]; 
+				rowArray[i] = rowArray[i+3];
+				rowArray[i+3] = rowArray[i+6];
+				rowArray[i+6] = temp;
+							
+			}
+
 
 		}
 		
@@ -138,10 +142,15 @@ public class SudokuGen {
 			//ASCII
 			//|1 5 4| 8 7 3 | 2 9 6|   will become 
 			//|5 4 1| 7 3 8 | 9 6 2|
-			temp = rowArray[0]; rowArray[0]=rowArray[1]; rowArray[1]= rowArray[2]; rowArray[2]= temp;
-			temp = rowArray[3]; rowArray[3]=rowArray[4]; rowArray[4]= rowArray[5]; rowArray[5]= temp;
-			temp = rowArray[6]; rowArray[6]=rowArray[7]; rowArray[7]= rowArray[8]; rowArray[8]= temp;
-
+			for(int i=0; i<9; i+=3){
+				temp = rowArray[i]; 
+				rowArray[i]=rowArray[i+1]; 
+				rowArray[i+1]=rowArray[i+2];
+				rowArray[i+2]= temp; 
+								
+			}
+			
+		
 		}
 
 
